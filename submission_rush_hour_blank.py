@@ -258,8 +258,8 @@ def test_simple_rush_hour_graphplan():
     # BEGIN_YOUR_CODE
     problem = simple_rush_hour_task()
     gp = GraphPlan(problem)
-    partial_plan = gp.execute()
-    lin = Linearize(problem)
+    partial_plan, _ = gp.execute()
+    lin = Linearize(partial_plan)
     total_plan = lin.execute()
     return partial_plan, total_plan
 
@@ -270,8 +270,8 @@ def test_complex_rush_hour_graphplan():
     # BEGIN_YOUR_CODE
     problem = complex_rush_hour_task()  # <-- or however the assignment defines it
     gp = GraphPlan(problem)
-    partial_plan = gp.execute()
-    lin = Linearize(problem)
+    partial_plan, _ = gp.execute()
+    lin = Linearize(partial_plan)
     total_plan = lin.execute()
     return partial_plan, total_plan
     # END_YOUR_CODE
