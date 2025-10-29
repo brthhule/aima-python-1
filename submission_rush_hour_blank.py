@@ -187,22 +187,40 @@ E.g.
 Note - the above example is not correct, and is nonsensical for this task.
 """
 
-def simple_rush_hour_manual():
+def simple_rush_hour_task():
 
-    # BEGIN_YOUR_CODE
+    initial = ('At(R, C3_2) & At(B1, C1_3) & At(B2, C1_1) & '
+            'Clear(C1_2) & Clear(C1_4) & Clear(C2_1) & '
+            'Clear(C2_2) & Clear(C2_3) & Clear(C2_4) & '
+            'Clear(C3_1) & Clear(C3_3) & Clear(C3_4) & '
+            'Clear(C4_1) & Clear(C4_2) & Clear(C4_3) & '
+            'Clear(C4_4)'
+            )
+    goals = 'At(R, C3_4)'
+    domain = ('Car(R) & Car(B1) & Car(B2) & '
+            'Horizontal(R) & Horizontal(B2) & Vertical(B1)')
     
-    return []
+    return rush_hour_4x4(initial, goals, domain)
 
-    # END_YOUR_CODE
-
-
-def complex_rush_hour_manual():
-
-    # BEGIN_YOUR_CODE
+def complex_rush_hour_task():
+   
+    initial = (
+        'At(R, C4_1) & At(A, C4_2) & At(B, C4_3) & '
+        'At(C, C3_3) & At(D, C3_2) & At(E, C3_4) & '
+        'Clear(C1_1) & Clear(C1_2) & Clear(C1_3) & '
+        'Clear(C1_4) & Clear(C2_1) & Clear(C2_2) & '
+        'Clear(C2_3) & Clear(C2_4) & Clear(C3_1) & '
+        'Clear(C4_4)'
+    )
     
-    return []
-
-    # END_YOUR_CODE 
+    goals = "At(R, C4_4)"
+    
+    domain = (
+        'Car(R) & Car(A) & Car(B) & Car(C) & Car(D) & Car(E) & '
+        'Horizontal(R) & Vertical(A) & Vertical(B) & Horizontal(C) & Vertical(D) & Vertical(E)'
+    )   
+    
+    return rush_hour_4x4(initial, goals, domain)
 
 
 """
