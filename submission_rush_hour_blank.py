@@ -71,9 +71,20 @@ def rush_hour_4x4(initial, goals, domain):
                 domain=expr('Car(c) & Cell(frm) & Cell(to) & AdjacentRight(frm, to)')),
             
             # BEGIN_YOUR_CODE
+            Action('MoveLeft(c, frm, to)',
+                precond=expr('At(c, frm) & Clear(to) & Horizontal(c) & AdjacentLeft(frm, to)'),
+                effect=expr('At(c, to) & Clear(frm) & ~At(c, frm) & ~Clear(to)'),
+                domain=expr('Car(c) & Cell(frm) & Cell(to) & AdjacentLeft(frm, to)')),
 
-                        
-            
+            Action('MoveUp(c, frm, to)',
+                precond=expr('At(c, frm) & Clear(to) & Vertical(c) & AdjacentUp(frm, to)'),
+                effect=expr('At(c, to) & Clear(frm) & ~At(c, frm) & ~Clear(to)'),
+                domain=expr('Car(c) & Cell(frm) & Cell(to) & AdjacentUp(frm, to)')),
+
+            Action('MoveDown(c, frm, to)',
+                precond=expr('At(c, frm) & Clear(to) & Vertical(c) & AdjacentDown(frm, to)'),
+                effect=expr('At(c, to) & Clear(frm) & ~At(c, frm) & ~Clear(to)'),
+                domain=expr('Car(c) & Cell(frm) & Cell(to) & AdjacentDown(frm, to)')),
             # END_YOUR_CODE
             
         ],
@@ -92,19 +103,22 @@ def rush_hour_4x4(initial, goals, domain):
             'AdjacentRight(C2_1, C2_2) & AdjacentRight(C2_2, C2_3) & AdjacentRight(C2_3, C2_4) & '
             'AdjacentRight(C3_1, C3_2) & AdjacentRight(C3_2, C3_3) & AdjacentRight(C3_3, C3_4) & '
             'AdjacentRight(C4_1, C4_2) & AdjacentRight(C4_2, C4_3) & AdjacentRight(C4_3, C4_4) & '
+
             'AdjacentLeft(C1_2, C1_1) & AdjacentLeft(C1_3, C1_2) & AdjacentLeft(C1_4, C1_3) & '
             'AdjacentLeft(C2_2, C2_1) & AdjacentLeft(C2_3, C2_2) & AdjacentLeft(C2_4, C2_3) & '
             'AdjacentLeft(C3_2, C3_1) & AdjacentLeft(C3_3, C3_2) & AdjacentLeft(C3_4, C3_3) & '
             'AdjacentLeft(C4_2, C4_1) & AdjacentLeft(C4_3, C4_2) & AdjacentLeft(C4_4, C4_3) & '
+
             'AdjacentDown(C1_1, C2_1) & AdjacentDown(C2_1, C3_1) & AdjacentDown(C3_1, C4_1) & '
             'AdjacentDown(C1_2, C2_2) & AdjacentDown(C2_2, C3_2) & AdjacentDown(C3_2, C4_2) & '
             'AdjacentDown(C1_3, C2_3) & AdjacentDown(C2_3, C3_3) & AdjacentDown(C3_3, C4_3) & '
             'AdjacentDown(C1_4, C2_4) & AdjacentDown(C2_4, C3_4) & AdjacentDown(C3_4, C4_4) & '
             
             # BEGIN_YOUR_CODE
-            
-            
-            
+            'AdjacentUp(C2_1, C1_1) & AdjacentUp(C3_1, C2_1) & AdjacentUp(C4_1, C3_1) & '
+            'AdjacentUp(C2_2, C1_2) & AdjacentUp(C3_2, C2_2) & AdjacentUp(C4_2, C3_2) & '
+            'AdjacentUp(C2_3, C1_3) & AdjacentUp(C3_3, C2_3) & AdjacentUp(C4_3, C3_3) & '
+            'AdjacentUp(C2_4, C1_4) & AdjacentUp(C3_4, C2_4) & AdjacentUp(C4_4, C3_4) & '
             # END_YOUR_CODE
         )
     ) 
