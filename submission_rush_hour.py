@@ -248,11 +248,15 @@ Hints
    each), and format into the acceptable solution format.
 """
 
+
+
+
+# python -c "from submission_rush_hour import test_simple_rush_hour_graphplan; test_simple_rush_hour_graphplan()"
 def test_simple_rush_hour_graphplan():
     # BEGIN_YOUR_CODE
     problem = simple_rush_hour_task()
     gp = GraphPlan(problem)
-    partial_plan, _ = gp.execute()
+    partial_plan = gp.execute()
     lin = Linearize(partial_plan)
     total_plan = lin.execute()
     return partial_plan, total_plan
@@ -262,9 +266,9 @@ def test_simple_rush_hour_graphplan():
 
 def test_complex_rush_hour_graphplan():
     # BEGIN_YOUR_CODE
-    problem = complex_rush_hour_task()  # <-- or however the assignment defines it
+    problem = complex_rush_hour_task()
     gp = GraphPlan(problem)
-    partial_plan, _ = gp.execute()
+    partial_plan = gp.execute()
     lin = Linearize(partial_plan)
     total_plan = lin.execute()
     return partial_plan, total_plan
@@ -380,7 +384,10 @@ def part_d():
     # BEGIN_YOUR_CODE
     
     # Modify the template below to solve the problem
-    return [('a1', 'i1'), ('a2', 'i1'), ('a3', 'i1'), ('a4', 'i1')] 
+    return [('a1', 'i3'),
+        ('a2', 'i2'),
+        ('a3', 'i4'),
+        ('a4', 'i2')] 
     
     # END_YOUR_CODE
 
